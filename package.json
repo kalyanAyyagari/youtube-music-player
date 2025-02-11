@@ -1,0 +1,79 @@
+{
+  "name": "youtube-music-player",
+  "displayName": "youtube-music-player",
+  "description": "This is a youtube music player extension so that developers can listen to music right wher e they code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ytmusic.login",
+        "title": "YouTube Music: Login"
+      },
+      {
+        "command": "ytmusic.showPlayer",
+        "title": "YouTube Music: Open Player"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "youtube-music",
+          "title": "YouTube Music",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "youtube-music": [
+        {
+          "id": "ytmusic-playlists",
+          "name": "Playlists"
+        },
+        {
+          "id": "ytmusic-player",
+          "name": "Now Playing"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "googleapis": "^92.0.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.97.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.19.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
